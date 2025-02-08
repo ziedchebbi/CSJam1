@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DialogueManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI dialogueArea;
-    [SerializeField] private TextMeshProUGUI answerArea;
+    [SerializeField] private Transform answerArea;
     [SerializeField] private GameObject AnswerObject; // Gameobject to represent an answer
+    [SerializeField] private Color activeAnswerColor;
 
-    private string action = null;
+    private string action = null; // for user interaction
 
+    // Dialogue section
+    private int section;
+
+    // Answer
     private List<GameObject> activeAnswerObjects = new List<GameObject>(); // Active answer objects on the scene
     private int selectedAnswer; // Selected answer index
+    private int maxAnswerIndex;
 
     #region TEST
     public DialogueTree testdiag; //T
@@ -25,32 +33,55 @@ public class DialogueManager : MonoBehaviour
     #region Dialogue handling
     public void StartDialogue(DialogueTree dialogueTree)
     {
-        StartCoroutine(RunDialogue(dialogueTree));
+        StartCoroutine(RunDialogue(dialogueTree, 0));
     }
 
-    private IEnumerator RunDialogue(DialogueTree dialogueTree)
-    {
-        int section = 0;
-        
+    private IEnumerator RunDialogue(DialogueTree dialogueTree, int sectionIndex)
+    {   
+        #region Cycle dialogue for section
         for (int dialogue = 0; dialogue < dialogueTree.sections[section].dialogue.Length; dialogue++)
         {
             dialogueArea.text = dialogueTree.sections[section].dialogue[dialogue];
 
-            while (action == null) { yield return null; }
+            while (action != "continue") { yield return null; }
             action = null;
         }
+        #endregion
 
-        section = handleQuetion(dialogueTree.sections[section].answers);
+        #region Assign section based on input
+        if (!dialogueTree.sections[section].isEoD)
+        {
+            StartCoroutine(HandleQuetion(dialogueTree.sections[section].answers));
+            while (action == "listening") { yield return null; }
+
+            section = dialogueTree.sections[section].answers[selectedAnswer].leadsTo;
+
+            StartCoroutine(RunDialogue(dialogueTree, section));
+        }
+        #endregion
     }
     #endregion
 
     #region Quetion handling
-    private int handleQuetion(Answer[] answers)
+    private IEnumerator HandleQuetion(Answer[] answers)
+    {
+        action = "listening";
+
+        selectedAnswer = 0;    
+        maxAnswerIndex = answers.Length - 1;
+
+        RenderAnswers(answers);
+
+        while (action == "listening") { yield return null; }  
+
+        ClearAnswerArea();
+
+        action = null; 
+    }
+
+    private void RenderAnswers(Answer[] answers)
     {
         dialogueArea.text = "";
-        selectedAnswer = 0;
-
-        // render answers
         for (int answer = 0; answer < answers.Length; answer++)
         {
             GameObject answerObject = Instantiate(AnswerObject, answerArea.transform);
@@ -58,12 +89,26 @@ public class DialogueManager : MonoBehaviour
 
             answerObject.GetComponent<TextMeshProUGUI>().text = answers[answer].label;
         }
-        
-        return 1;
+    }
+    
+    private void ClearAnswerArea()
+    {
+        foreach (GameObject answerObject in activeAnswerObjects)
+        {
+            Destroy(answerObject);
+        }
+        activeAnswerObjects.Clear();
     }
     #endregion
 
     #region UI input handling
-    void OnProgressDialogue() { action = "continue"; }
+    void OnProgressDialogue() { action = "continue"; } // for proceeding dialogue and selecting answers
+    void OnNavigateOption(InputValue value) 
+    { 
+        selectedAnswer += (int)value.Get<float>(); 
+
+        if (selectedAnswer > maxAnswerIndex) { selectedAnswer = 0; }
+        if (selectedAnswer < 0) { selectedAnswer = maxAnswerIndex; }    
+    }
     #endregion
 }

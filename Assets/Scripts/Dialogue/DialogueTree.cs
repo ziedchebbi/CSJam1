@@ -11,6 +11,7 @@ public struct DialogueSection
 {
     [TextArea]
     public string[] dialogue;
+    public bool isEoD;
     public Answer[] answers;
 }
 

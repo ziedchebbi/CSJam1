@@ -22,14 +22,6 @@ public class DialogueManager : MonoBehaviour
     private int selectedAnswer; // Selected answer index
     private int maxAnswerIndex;
 
-    #region TEST
-    public DialogueTree testdiag; //T
-    private void Start()
-    {
-        StartDialogue(testdiag); //T
-    }
-    #endregion
-
     #region Dialogue handling
     public void StartDialogue(DialogueTree dialogueTree)
     {

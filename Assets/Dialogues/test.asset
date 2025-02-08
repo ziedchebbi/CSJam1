@@ -16,6 +16,7 @@ MonoBehaviour:
   - dialogue:
     - diag 1
     - diag 2
+    - diag 3
     answers:
     - label: yes
       leadsTo: 1

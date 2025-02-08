@@ -41,7 +41,7 @@ public class DialogueManager : MonoBehaviour
         #endregion
 
         #region Assign section based on input
-        if (!dialogueTree.sections[section].isEndOfDialogue)
+        if (!dialogueTree.sections[section].isEoD)
         {
             StartCoroutine(HandleQuetion(dialogueTree.sections[section].answers));
             while (action == "listening") { yield return null; }

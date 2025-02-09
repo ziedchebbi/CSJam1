@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -41,6 +40,7 @@ public class DialogueManager : MonoBehaviour
         #endregion
 
         #region Assign section based on input
+        dialogueArea.text = "";
         if (!dialogueTree.sections[section].isEndOfDialogue)
         {
             StartCoroutine(HandleQuetion(dialogueTree.sections[section].answers));

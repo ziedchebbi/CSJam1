@@ -17,7 +17,7 @@ MonoBehaviour:
     - diag 1
     - diag 2
     - diag 3
-    isEoD: 0
+    isEndOfDialogue: 0
     answers:
     - label: yes
       leadsTo: 1
@@ -25,9 +25,9 @@ MonoBehaviour:
       leadsTo: 2
   - dialogue:
     - diag yes
-    isEoD: 1
+    isEndOfDialogue: 1
     answers: []
   - dialogue:
     - diag no
-    isEoD: 1
+    isEndOfDialogue: 1
     answers: []

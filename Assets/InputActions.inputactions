@@ -164,17 +164,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "c78eac73-064c-4fcf-80b5-6c9ee0d92935",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Progress Dialogue",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "W/S",
                     "id": "dbf81adc-8b39-4b1d-af3f-541467a227ae",
                     "path": "1DAxis(whichSideWins=1)",

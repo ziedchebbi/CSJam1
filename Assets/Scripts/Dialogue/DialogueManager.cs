@@ -68,6 +68,12 @@ public class DialogueManager : MonoBehaviour
             {
                 progressManager.Proceed();
             }
+
+            if(dialogueTree.sections[section].altEnd)
+            {
+                progressManager.EndThisShit("The End.");
+            }
+
             progressManager.ChangeMode();
         }
         #endregion

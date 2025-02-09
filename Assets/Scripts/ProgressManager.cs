@@ -1,8 +1,13 @@
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ProgressManager : MonoBehaviour
 {   
+    public GameObject blackScreen;
+    public TextMeshProUGUI blackScreenText;
+
     public GameObject dialogueBackground;
 
     private DialogueManager dialogueManager;
@@ -13,10 +18,8 @@ public class ProgressManager : MonoBehaviour
     [SerializeField] private List<DialogueTree> dialogs = new List<DialogueTree>();
 
     public GameObject klaus;
-    public Transform klausPos;
-
     public GameObject General;
-    public Transform GeneralPos;
+    public GameObject Hanz;
 
     private void Start()
     {
@@ -28,6 +31,7 @@ public class ProgressManager : MonoBehaviour
         dialogueBackground.SetActive(false);
 
         ChangeMode();
+        StartCoroutine(BlackScreen("Episode 1: The news"));
         dialogueManager.StartDialogue(dialogs[0]);
     }
 
@@ -44,10 +48,41 @@ public class ProgressManager : MonoBehaviour
 
         if (phase == 2)
         {
-            Destroy(klaus);
-            Instantiate(General, GeneralPos);
+            StartCoroutine(BlackScreen("Episode 2: The Manhattan project"));
+            klaus.SetActive(false);
+            General.SetActive(true);
             ChangeMode();
             dialogueManager.StartDialogue(dialogs[1]);
         }
+
+        if (phase == 3)
+        {
+            StartCoroutine(BlackScreen("Episode 3 Part 1: Bad news"));
+            klaus.SetActive(true);
+            General.SetActive(false);
+            Hanz.SetActive(true);
+            ChangeMode();
+            dialogueManager.StartDialogue(dialogs[2]);
+        }
+
+        if (phase == 4)
+        {
+            EndThisShit("To Be Continued...");
+        }
+    }
+
+    private IEnumerator BlackScreen(string text)
+    {
+        blackScreenText.text = text;
+        blackScreen.SetActive(true);
+        yield return new WaitForSeconds(3.0f);
+        blackScreenText.text = "";
+        blackScreen.SetActive(false);
+    }
+
+    public void EndThisShit(string text)
+    {
+        blackScreenText.text = text;
+        blackScreen.SetActive(true);
     }
 }

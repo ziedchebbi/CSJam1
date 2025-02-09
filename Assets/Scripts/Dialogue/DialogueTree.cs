@@ -13,6 +13,7 @@ public struct DialogueSection
     public string[] dialogue;
     public bool isEndOfDialogue;
     public bool progressProgressManager;
+    public bool altEnd;
     public Answer[] answers;
 }
 

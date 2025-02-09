@@ -1,0 +1,190 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95282e4c3a660e643a72d4fdb9cc45c3, type: 3}
+  m_Name: ProjectManhattan1
+  m_EditorClassIdentifier: 
+  sections:
+  - dialogue:
+    - Dr. Oppenheimer.
+    - "I\u2019m Colonel Groves. This is Lieutenant Colonel Nichols."
+    - Theaters of combat all over the world, but I have to stay in Washington.
+    isEndOfDialogue: 0
+    answers:
+    - label: Why?
+      leadsTo: 1
+  - dialogue:
+    - "\rI built the Pentagon."
+    - The brass likes it so much, they made me take over the Manhattan Engineer District.
+    isEndOfDialogue: 0
+    answers:
+    - label: Which is?
+      leadsTo: 2
+  - dialogue:
+    - Don't be a smartass.
+    - You know damn well what it is.
+    - You and half of every physics department across the country.
+    - "That\u2019s problem number one."
+    isEndOfDialogue: 0
+    answers:
+    - label: I thought problem number one would be securing enough uranium ore.
+      leadsTo: 3
+  - dialogue:
+    - 1,200 tons, bought the day I took charge.
+    - "Now I\u2019m looking for a project director."
+    isEndOfDialogue: 0
+    answers:
+    - label: And my name came up?
+      leadsTo: 4
+  - dialogue:
+    - Nope.
+    - Even though you brought quantum physics to America, which made me curious.
+    - "You\u2019re a dilettante, a womanizer, a suspected communist."
+    - Unstable, theatrical, egotistical, neurotic.
+    isEndOfDialogue: 0
+    answers:
+    - label: "Nothing good, no? Not even \u201Che\u2019s brilliant, but\u2026\u201D"
+      leadsTo: 5
+  - dialogue:
+    - "\rWell, brilliance is taken for granted in your circle, so no."
+    - Tolman thinks you have integrity, but he also strikes me as a guy who knows
+      more about science than people.
+    - Unstable, theatrical, egotistical, neurotic.
+    isEndOfDialogue: 0
+    answers:
+    - label: Yet here you are.
+      leadsTo: 6
+  - dialogue:
+    - Tolman thinks you have integrity, but he also strikes me as a guy who knows
+      more about science than people.
+    isEndOfDialogue: 0
+    answers:
+    - label: "Why aren\u2019t you a general?"
+      leadsTo: 7
+  - dialogue:
+    - "They\u2019re making me one for this."
+    isEndOfDialogue: 0
+    answers:
+    - label: "Perhaps I\u2019ll have the same luck."
+      leadsTo: 8
+  - dialogue:
+    - The Nobel Prize for making a bomb?
+    isEndOfDialogue: 0
+    answers:
+    - label: Alfred Nobel invented dynamite.
+      leadsTo: 9
+  - dialogue:
+    - So how would you proceed?
+    isEndOfDialogue: 0
+    answers:
+    - label: "You\u2019re talking about turning theory into a practical weapon system
+        faster than the Nazis."
+      leadsTo: 10
+  - dialogue:
+    - Who have a 12-month head start.
+    isEndOfDialogue: 0
+    answers:
+    - label: 18.
+      leadsTo: 11
+  - dialogue:
+    - How could you possibly know that?
+    isEndOfDialogue: 0
+    answers:
+    - label: Our fastest neutron research took six months.
+      leadsTo: 12
+  - dialogue:
+    - "The man they\u2019ve undoubtedly put in charge will have made that leap instantly."
+    isEndOfDialogue: 0
+    answers:
+    - label: Who do you think they put in charge?
+      leadsTo: 13
+  - dialogue:
+    - Werner Heisenberg.
+    isEndOfDialogue: 0
+    answers:
+    - label: He has the most intuitive understanding of atomic structure I have ever
+        seen.
+      leadsTo: 14
+  - dialogue:
+    - You know his work?
+    isEndOfDialogue: 0
+    answers:
+    - label: "I know him, just like I know Walther Bothe, von Weizs\xE4cker, Diebner.
+        In a straight race, the Germans win."
+      leadsTo: 15
+  - dialogue: []
+    isEndOfDialogue: 0
+    answers:
+    - label: "We\u2019ve got one hope."
+      leadsTo: 16
+  - dialogue:
+    - Which is?
+    isEndOfDialogue: 0
+    answers:
+    - label: Antisemitism.
+      leadsTo: 17
+  - dialogue: []
+    isEndOfDialogue: 0
+    answers:
+    - label: "Hitler called quantum physics \u201CJewish science\u201D. Said it right
+        to Einstein\u2019s face."
+      leadsTo: 18
+  - dialogue: []
+    isEndOfDialogue: 0
+    answers:
+    - label: "Our one hope is that Hitler is so blinded by hate that he\u2019s denied
+        Heisenberg proper resources, because it\u2019ll take vast resources."
+      leadsTo: 19
+  - dialogue:
+    - "Our nation\u2019s best scientists working together. Right now, they\u2019re
+      scattered."
+    isEndOfDialogue: 0
+    answers:
+    - label: Which gives us compartmentalization.
+      leadsTo: 20
+  - dialogue:
+    - All minds have to see the whole task to contribute efficiently.
+    isEndOfDialogue: 0
+    answers:
+    - label: Poor security may cost us the race.
+      leadsTo: 21
+  - dialogue:
+    - Inefficiency will.
+    isEndOfDialogue: 0
+    answers:
+    - label: ' The Germans know more than us anyway.'
+      leadsTo: 22
+  - dialogue:
+    - "The Russians don\u2019t."
+    isEndOfDialogue: 0
+    answers:
+    - label: So you have the job now?
+      leadsTo: 23
+  - dialogue:
+    - "Uh, I\u2019m considering it."
+    isEndOfDialogue: 0
+    answers:
+    - label: "I\u2019m starting to see where you got your reputation."
+      leadsTo: 24
+  - dialogue:
+    - "My favorite response: \u201COppenheimer couldn\u2019t run a hamburger stand.\u201D"
+    isEndOfDialogue: 0
+    answers:
+    - label: "I couldn\u2019t...."
+      leadsTo: 25
+  - dialogue: []
+    isEndOfDialogue: 0
+    answers:
+    - label: But I can run the Manhattan Project.
+      leadsTo: 26
+  - dialogue: []
+    isEndOfDialogue: 1
+    answers: []

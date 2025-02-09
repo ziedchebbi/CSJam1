@@ -12,6 +12,7 @@ public struct DialogueSection
     [TextArea]
     public string[] dialogue;
     public bool isEndOfDialogue;
+    public bool progressProgressManager;
     public Answer[] answers;
 }
 

@@ -63,6 +63,11 @@ public class DialogueManager : MonoBehaviour
         } else if (dialogueTree.sections[section].isEndOfDialogue) 
         {
             dialogueArea.text = "";
+
+            if (dialogueTree.sections[section].progressProgressManager)
+            {
+                progressManager.Proceed();
+            }
             progressManager.ChangeMode();
         }
         #endregion

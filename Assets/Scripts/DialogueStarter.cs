@@ -7,5 +7,6 @@ public class DialogueStarter : MonoBehaviour
     {
         GameObject.Find("GM").GetComponent<ProgressManager>().ChangeMode();
         GameObject.Find("GM").GetComponent<DialogueManager>().StartDialogue(dialogueTree);
+        GetComponent<CircleCollider2D>().enabled = false;
     }
 }

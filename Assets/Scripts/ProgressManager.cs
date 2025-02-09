@@ -8,7 +8,15 @@ public class ProgressManager : MonoBehaviour
     private DialogueManager dialogueManager;
     private PlayerMovement playerMovement;
 
+    private int phase = 1;
+
     [SerializeField] private List<DialogueTree> dialogs = new List<DialogueTree>();
+
+    public GameObject klaus;
+    public Transform klausPos;
+
+    public GameObject General;
+    public Transform GeneralPos;
 
     private void Start()
     {
@@ -28,5 +36,18 @@ public class ProgressManager : MonoBehaviour
         dialogueBackground.SetActive(!dialogueBackground.activeSelf);
         dialogueManager.enabled = !dialogueManager.enabled;
         playerMovement.enabled = !playerMovement.enabled;
+    }
+
+    public void Proceed()
+    {
+        phase++;
+
+        if (phase == 2)
+        {
+            Destroy(klaus);
+            Instantiate(General, GeneralPos);
+            ChangeMode();
+            dialogueManager.StartDialogue(dialogs[1]);
+        }
     }
 }

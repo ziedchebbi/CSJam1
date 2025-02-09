@@ -91,6 +91,15 @@ public class DialogueManager : MonoBehaviour
         }
         activeAnswerObjects.Clear();
     }
+
+    private void UpdateHighlighted()
+    {
+        foreach (GameObject option in activeAnswerObjects)
+        {
+            option.GetComponent<TextMeshProUGUI>().color = Color.white;
+        }
+        activeAnswerObjects[selectedAnswer].GetComponent<TextMeshProUGUI>().color = activeAnswerColor;
+    }
     #endregion
 
     #region UI input handling
@@ -100,7 +109,9 @@ public class DialogueManager : MonoBehaviour
         selectedAnswer += (int)value.Get<float>(); 
 
         if (selectedAnswer > maxAnswerIndex) { selectedAnswer = 0; }
-        if (selectedAnswer < 0) { selectedAnswer = maxAnswerIndex; }    
+        if (selectedAnswer < 0) { selectedAnswer = maxAnswerIndex; }
+
+        UpdateHighlighted();
     }
     #endregion
 }

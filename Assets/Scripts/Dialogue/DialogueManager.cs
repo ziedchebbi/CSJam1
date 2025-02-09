@@ -21,13 +21,22 @@ public class DialogueManager : MonoBehaviour
     private int selectedAnswer; // Selected answer index
     private int maxAnswerIndex;
 
+    private ProgressManager progressManager;
+
+    private void Start()
+    {
+        progressManager = GetComponent<ProgressManager>();
+    }
+
     #region Dialogue handling
     public void StartDialogue(DialogueTree dialogueTree)
     {
-        StartCoroutine(RunDialogue(dialogueTree, 0));
+        dialogueArea.text = "";
+        section = 0;
+        StartCoroutine(RunDialogue(dialogueTree));
     }
 
-    private IEnumerator RunDialogue(DialogueTree dialogueTree, int sectionIndex)
+    private IEnumerator RunDialogue(DialogueTree dialogueTree)
     {   
         #region Cycle dialogue for section
         for (int dialogue = 0; dialogue < dialogueTree.sections[section].dialogue.Length; dialogue++)
@@ -40,17 +49,24 @@ public class DialogueManager : MonoBehaviour
         #endregion
 
         #region Assign section based on input
-        dialogueArea.text = "";
-        if (!dialogueTree.sections[section].isEndOfDialogue)
+        if (!dialogueTree.sections[section].isEndOfDialogue && dialogueTree.sections[section].answers.Length > 0)
         {
             StartCoroutine(HandleQuetion(dialogueTree.sections[section].answers));
             while (action == "listening") { yield return null; }
 
             section = dialogueTree.sections[section].answers[selectedAnswer].leadsTo;
 
-            StartCoroutine(RunDialogue(dialogueTree, section));
+            StartCoroutine(RunDialogue(dialogueTree));
+        } else if (!dialogueTree.sections[section].isEndOfDialogue && dialogueTree.sections[section].answers.Length == 0)
+        {
+            section++;
+        } else if (dialogueTree.sections[section].isEndOfDialogue) 
+        {
+            dialogueArea.text = "";
+            progressManager.ChangeMode();
         }
         #endregion
+
     }
     #endregion
 
@@ -63,12 +79,15 @@ public class DialogueManager : MonoBehaviour
         maxAnswerIndex = answers.Length - 1;
 
         RenderAnswers(answers);
+        UpdateHighlighted();
 
         while (action == "listening") { yield return null; }  
 
         ClearAnswerArea();
 
         action = null; 
+
+        yield break;
     }
 
     private void RenderAnswers(Answer[] answers)

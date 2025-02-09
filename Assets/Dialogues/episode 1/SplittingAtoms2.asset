@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95282e4c3a660e643a72d4fdb9cc45c3, type: 3}
+  m_Name: SplittingAtoms2
+  m_EditorClassIdentifier: 
+  sections:
+  - dialogue: []
+    isEndOfDialogue: 0
+    answers:
+    - label: "See? Can\u2019t be done."
+      leadsTo: 1
+  - dialogue: []
+    isEndOfDialogue: 0
+    answers:
+    - label: Very elegant.
+      leadsTo: 2
+  - dialogue: []
+    isEndOfDialogue: 0
+    answers:
+    - label: Quite clear.
+      leadsTo: 3
+  - dialogue:
+    - I did it
+    - And look.
+    - And look.
+    - "These fission pulses, they\u2019re massive."
+    - "I\u2019ve seen 30 of these in the past ten minutes."
+    - Theory will take you only so far.
+    isEndOfDialogue: 0
+    answers:
+    - label: "During the process\u2026 extra neutrons boil off, which could be used
+        to split other uranium atoms."
+      leadsTo: 4
+  - dialogue: []
+    isEndOfDialogue: 0
+    answers:
+    - label: Chain reaction.
+      leadsTo: 5
+  - dialogue:
+    - You're thinking what i'm thinking.
+    isEndOfDialogue: 0
+    answers:
+    - label: "You, me, and every other physicist around the world who\u2019s seen
+        the news."
+      leadsTo: 6
+  - dialogue: []
+    isEndOfDialogue: 0
+    answers:
+    - label: what are we all thinking?
+      leadsTo: 7
+  - dialogue: []
+    isEndOfDialogue: 0
+    answers:
+    - label: what are we all thinking?
+      leadsTo: 8
+  - dialogue: []
+    isEndOfDialogue: 0
+    answers:
+    - label: A bomb, Alvarez
+      leadsTo: 9
+    - label: Energy Alvarez
+      leadsTo: 9
+  - dialogue:
+    - A bomb...
+    isEndOfDialogue: 1
+    answers: []
